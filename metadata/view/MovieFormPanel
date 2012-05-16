@@ -16,7 +16,7 @@
     },
     "customConfigs": [],
     "designerId": "6689252e-bf36-4b45-ab4a-c25e12c63306",
-    "$viewOrder": 1,
+    "$viewOrder": 2,
     "expanded": true,
     "cn": [
         {
@@ -33,7 +33,7 @@
                 "designer|userClassName": "MyToolbar1"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen77017",
@@ -311,31 +311,6 @@
             ]
         },
         {
-            "id": "ExtBox1-ext-gen26505",
-            "type": "image",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "border": null,
-                "height": 110,
-                "html": null,
-                "id": "movieImage",
-                "itemId": "movieImage",
-                "maxHeight": null,
-                "maxWidth": null,
-                "style": "background-size: 65%; ",
-                "ui": null,
-                "width": 159,
-                "src": "",
-                "designer|userClassName": "MyImage"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
-        {
             "id": "ExtBox1-ext-gen2552",
             "type": "fieldset",
             "reference": {
@@ -379,6 +354,8 @@
                             "userConfig": {
                                 "fn": "onImdbIdChange",
                                 "implHandler": [
+                                    "// disabled for now - doesn't seem to work on the iPhone",
+                                    "/*",
                                     "if(newValue && newValue !== '' )",
                                     "{",
                                     "",
@@ -405,7 +382,8 @@
                                     "else",
                                     "{",
                                     "    Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');",
-                                    "}"
+                                    "}",
+                                    "*/"
                                 ],
                                 "name": "change",
                                 "designer|userClassName": "onImdbIdChange"

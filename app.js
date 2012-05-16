@@ -30,7 +30,8 @@ Ext.application({
         'MoviesList',
         'MovieFormPanel',
         'MoviesContainer',
-        'MoviesNavigationView'
+        'MoviesNavigationView',
+        'MyImage'
     ],
     name: 'Movies',
 

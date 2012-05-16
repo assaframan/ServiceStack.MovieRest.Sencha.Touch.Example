@@ -54,15 +54,6 @@ Ext.define('Movies.view.MovieFormPanel', {
                 ]
             },
             {
-                xtype: 'image',
-                height: 110,
-                id: 'movieImage',
-                itemId: 'movieImage',
-                style: 'background-size: 65%; ',
-                width: 159,
-                src: ''
-            },
-            {
                 xtype: 'fieldset',
                 title: 'Movie Info',
                 items: [
@@ -268,33 +259,36 @@ Ext.define('Movies.view.MovieFormPanel', {
     },
 
     onImdbIdChange: function(textfield, newValue, oldValue, options) {
+        // disabled for now - doesn't seem to work on the iPhone
+        /*
         if(newValue && newValue !== '' )
         {
 
-            var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');
+        var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');
 
-            Ext.getCmp('movieImage').setSrc('http://www.sanjeevflexipack.com/images/preloader_transparent.gif');
+        Ext.getCmp('movieImage').setSrc('http://www.sanjeevflexipack.com/images/preloader_transparent.gif');
 
-            imdbMovieModel.load(newValue, {
-                scope: this,
-                failure: function(record, operation) {
-                    //do something if the load failed
-                    Ext.Msg.alert('Error', 'Id not found in IMDB!', Ext.emptyFn);
-                    Ext.getCmp('movieImage').setSrc('http://www.formhandler.net/images/image-not-found.gif');
-                },
-                success: function(record, operation) {
-                    //do something if the load succeeded
-                    Ext.getCmp('movieImage').setSrc(record.get('Poster'));
-                },
-                callback: function(record, operation) {
-                    //do something whether the load succeeded or failed
-                }
-            });
-        }
-        else
-        {
-            Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
-        }
+        imdbMovieModel.load(newValue, {
+        scope: this,
+        failure: function(record, operation) {
+        //do something if the load failed
+        Ext.Msg.alert('Error', 'Id not found in IMDB!', Ext.emptyFn);
+        Ext.getCmp('movieImage').setSrc('http://www.formhandler.net/images/image-not-found.gif');
+    },
+    success: function(record, operation) {
+        //do something if the load succeeded
+        Ext.getCmp('movieImage').setSrc(record.get('Poster'));
+    },
+    callback: function(record, operation) {
+        //do something whether the load succeeded or failed
+    }
+        });
+}
+else
+{
+        Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+}
+*/
     }
 
 });
