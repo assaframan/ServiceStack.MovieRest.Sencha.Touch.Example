@@ -83,7 +83,7 @@ Ext.application({
                 //do something if the load failed
                 var DefaultServicesRootUrl = this.getApplication().getDefaultServicesRootUrl();
                 this.result = DefaultServicesRootUrl;
-                setServicesRootUrl(DefaultServicesRootUrl);
+                this.getApplication().setServicesRootUrl(DefaultServicesRootUrl);
 
 
             },
