@@ -85,23 +85,29 @@ Ext.define('Movies.view.MoviesContainer', {
     onResetDbButtonTap: function(button, e, options) {
         var restServiceUrl = Movies.app.getApplication().getResetServiceUrl();
 
-        var req = new XMLHttpRequest();
-        req.open('POST', restServiceUrl, false);
-        // req.overrideMimeType('text/plain; charset=x-user-defined'); // moz only
-        req.send(null);
-        if (req.status != 200) 
-        {
-            Ext.Msg.alert('Error', 'Error while tring to reset the database.', Ext.emptyFn);
+        try {    
+            var req = new XMLHttpRequest();
+            req.open('POST', restServiceUrl, false);
+            // req.overrideMimeType('text/plain; charset=x-user-defined'); // moz only
+            req.send(null);
+            if (req.status != 200) 
+            {
+                Ext.Msg.alert('Error', 'Error while tring to reset the database.', Ext.emptyFn);
+            }
+            else
+            {
+                Ext.Msg.alert('Info', 'The database is back to the original Top 5 movies..', Ext.emptyFn);
+                //get the store
+                var store = Ext.getStore('MoviesStore');
+
+                // reload the store
+                store.load();
+
+            }
         }
-        else
+        catch(err)
         {
-            Ext.Msg.alert('Info', 'The database is back to the original Top 5 movies..', Ext.emptyFn);
-            //get the store
-            var store = Ext.getStore('MoviesStore');
-
-            // reload the store
-            store.load();
-
+            Ext.Msg.alert('Error', 'Error while tring to reset the database.', Ext.emptyFn);    
         }
 
     },
