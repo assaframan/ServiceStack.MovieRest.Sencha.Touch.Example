@@ -104,6 +104,42 @@
             "expanded": true
         },
         {
+            "id": "ExtBox1-ext-gen35212",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setServicesRootUrl",
+                "designer|params": [
+                    "newRootUrl"
+                ],
+                "implHandler": [
+                    "var GlobalSettings = Ext.create('Movies.model.GlobalAppSettings', {",
+                    "                                    id: 1,",
+                    "                                    RootUrl : newRootUrl",
+                    "                                });",
+                    "",
+                    "// We can save Ed directly without having to add him to a Store first because we",
+                    "// configured a RestProxy this will automatically send a POST request to the url /users",
+                    "GlobalSettings.save({",
+                    "    scope: this,",
+                    "    failure: function(record, operation) {",
+                    "        //do something if the load failed",
+                    "        //Ext.Msg.alert('Error', 'Can not save settings!', Ext.emptyFn);",
+                    "        },",
+                    "    success: function(ed) {",
+                    "        }",
+                    "});"
+                ],
+                "designer|userClassName": "setServicesRootUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
             "id": "ExtBox1-ext-gen19419",
             "type": "basicfunction",
             "reference": {
@@ -144,42 +180,6 @@
                     "return this.result;"
                 ],
                 "designer|userClassName": "getServicesRootUrl"
-            },
-            "customConfigs": [],
-            "expanded": true
-        },
-        {
-            "id": "ExtBox1-ext-gen35212",
-            "type": "basicfunction",
-            "reference": {
-                "name": "items",
-                "type": "array"
-            },
-            "codeClass": null,
-            "userConfig": {
-                "fn": "setServicesRootUrl",
-                "designer|params": [
-                    "newRootUrl"
-                ],
-                "implHandler": [
-                    "var GlobalSettings = Ext.create('Movies.model.GlobalAppSettings', {",
-                    "                                    id: 1,",
-                    "                                    RootUrl : newRootUrl",
-                    "                                });",
-                    "",
-                    "// We can save Ed directly without having to add him to a Store first because we",
-                    "// configured a RestProxy this will automatically send a POST request to the url /users",
-                    "GlobalSettings.save({",
-                    "    scope: this,",
-                    "    failure: function(record, operation) {",
-                    "        //do something if the load failed",
-                    "        //Ext.Msg.alert('Error', 'Can not save settings!', Ext.emptyFn);",
-                    "        },",
-                    "    success: function(ed) {",
-                    "        }",
-                    "});"
-                ],
-                "designer|userClassName": "setServicesRootUrl"
             },
             "customConfigs": [],
             "expanded": true

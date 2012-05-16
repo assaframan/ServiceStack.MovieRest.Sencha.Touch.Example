@@ -52,6 +52,25 @@ Ext.application({
 
     },
 
+    setServicesRootUrl: function(newRootUrl) {
+        var GlobalSettings = Ext.create('Movies.model.GlobalAppSettings', {
+            id: 1,
+            RootUrl : newRootUrl
+        });
+
+        // We can save Ed directly without having to add him to a Store first because we
+        // configured a RestProxy this will automatically send a POST request to the url /users
+        GlobalSettings.save({
+            scope: this,
+            failure: function(record, operation) {
+                //do something if the load failed
+                //Ext.Msg.alert('Error', 'Can not save settings!', Ext.emptyFn);
+            },
+            success: function(ed) {
+            }
+        });
+    },
+
     getServicesRootUrl: function() {
 
         this.result = 'no url';
@@ -81,25 +100,6 @@ Ext.application({
 
 
         return this.result;
-    },
-
-    setServicesRootUrl: function(newRootUrl) {
-        var GlobalSettings = Ext.create('Movies.model.GlobalAppSettings', {
-            id: 1,
-            RootUrl : newRootUrl
-        });
-
-        // We can save Ed directly without having to add him to a Store first because we
-        // configured a RestProxy this will automatically send a POST request to the url /users
-        GlobalSettings.save({
-            scope: this,
-            failure: function(record, operation) {
-                //do something if the load failed
-                //Ext.Msg.alert('Error', 'Can not save settings!', Ext.emptyFn);
-            },
-            success: function(ed) {
-            }
-        });
     },
 
     getResetServiceUrl: function() {
