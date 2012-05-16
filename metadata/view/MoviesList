@@ -1,0 +1,39 @@
+{
+    "id": "ExtBox1-ext-gen4438",
+    "type": "list",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "docked": null,
+        "height": "",
+        "emptyText": "No movies found.",
+        "itemTpl": "<div>\n<h2>{Title}</h2>\n</div>",
+        "store": "MoviesStore",
+        "disableSelection": true,
+        "designer|userClassName": "MoviesList",
+        "designer|userAlias": "movieslist"
+    },
+    "customConfigs": [],
+    "designerId": "e06de567-f089-4d79-843a-7a3766dd324f",
+    "$viewOrder": 0,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen4446",
+            "type": "pullrefresh",
+            "reference": {
+                "name": "plugins",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "designer|userClassName": "MyPullRefreshPlugin"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

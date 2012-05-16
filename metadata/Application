@@ -1,0 +1,375 @@
+{
+    "id": "ExtBox1-ext-gen1989",
+    "type": "application",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "models": [
+            "Movie",
+            "ImdbMovie",
+            "GlobalAppSettings"
+        ],
+        "stores": [
+            "MoviesStore"
+        ],
+        "views": [
+            "MoviesList",
+            "MovieFormPanel",
+            "MoviesContainer",
+            "MoviesNavigationView"
+        ],
+        "name": "Movies"
+    },
+    "customConfigs": [],
+    "designerId": "application",
+    "$viewOrder": 0,
+    "iconCls": "icon-application",
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen26944",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "I________________________________________I",
+                "implHandler": [
+                    ""
+                ],
+                "designer|userClassName": "I________________________________________I"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen25049",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "I___I_add_the_movies_proxies_at_the_launch____I",
+                "implHandler": [
+                    ""
+                ],
+                "designer|userClassName": "I___I_add_the_movies_proxies_at_the_launch____I"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen26230",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "I_________________________________________I",
+                "implHandler": [
+                    ""
+                ],
+                "designer|userClassName": "I_________________________________________I"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen36683",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getDefaultServicesRootUrl",
+                "implHandler": [
+                    "return 'http://www.servicestack.net/ServiceStack.MovieRest';",
+                    "//return 'http://localhost:55867'; // I use this url for local debug",
+                    ""
+                ],
+                "designer|userClassName": "getDefaultServicesRootUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen19419",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getServicesRootUrl",
+                "implHandler": [
+                    "",
+                    "this.result = 'no url';",
+                    "",
+                    "var GlobalAppSettingsModel = Ext.ModelMgr.getModel('Movies.model.GlobalAppSettings');",
+                    "",
+                    "GlobalAppSettingsModel.load(1, {",
+                    "    scope: this,",
+                    "    failure: function(record, operation) {",
+                    "        //do something if the load failed",
+                    "        var DefaultServicesRootUrl = this.getApplication().getDefaultServicesRootUrl();",
+                    "        this.result = DefaultServicesRootUrl;",
+                    "        setServicesRootUrl(DefaultServicesRootUrl);",
+                    "",
+                    "",
+                    "    },",
+                    "    success: function(record, operation) {",
+                    "        //do something if the load succeeded",
+                    "        var rootUrl = record.get('RootUrl');",
+                    "        this.result = rootUrl;",
+                    "",
+                    "    },",
+                    "    callback: function(record, operation) {",
+                    "        //do something whether the load succeeded or failed",
+                    "    }",
+                    "});",
+                    "",
+                    "",
+                    "return this.result;"
+                ],
+                "designer|userClassName": "getServicesRootUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen35212",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setServicesRootUrl",
+                "designer|params": [
+                    "newRootUrl"
+                ],
+                "implHandler": [
+                    "var GlobalSettings = Ext.create('Movies.model.GlobalAppSettings', {",
+                    "                                    id: 1,",
+                    "                                    RootUrl : newRootUrl",
+                    "                                });",
+                    "",
+                    "// We can save Ed directly without having to add him to a Store first because we",
+                    "// configured a RestProxy this will automatically send a POST request to the url /users",
+                    "GlobalSettings.save({",
+                    "    scope: this,",
+                    "    failure: function(record, operation) {",
+                    "        //do something if the load failed",
+                    "        //Ext.Msg.alert('Error', 'Can not save settings!', Ext.emptyFn);",
+                    "        },",
+                    "    success: function(ed) {",
+                    "        }",
+                    "});"
+                ],
+                "designer|userClassName": "setServicesRootUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen21798",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getResetServiceUrl",
+                "implHandler": [
+                    "return this.getApplication().getServicesRootUrl() + \"/reset-movies/?format=json\";"
+                ],
+                "designer|userClassName": "getResetServiceUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen8526",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "getMoviesServiceUrl",
+                "implHandler": [
+                    "return this.getApplication().getServicesRootUrl() + '/movies';"
+                ],
+                "designer|userClassName": "getMoviesServiceUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen15217",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateMovieModelProxyUrl",
+                "implHandler": [
+                    "",
+                    "// proxy with the currect URL",
+                    "var modelProxy =   {",
+                    "    type: 'rest',",
+                    "    extraParams: {",
+                    "        format: 'json'",
+                    "    },",
+                    "    url: this.getApplication().getMoviesServiceUrl(), // <----------------------------- the url",
+                    "    format: '',",
+                    "    reader: {",
+                    "        type: 'json',",
+                    "        rootProperty: 'Movie'",
+                    "    },",
+                    "    writer: {",
+                    "        type: 'json',",
+                    "        rootProperty: ''",
+                    "    }",
+                    "};",
+                    "",
+                    "//get the store",
+                    "var store = Ext.getStore('MoviesStore');",
+                    "",
+                    "// update store url",
+                    "store.load();    ",
+                    "",
+                    "",
+                    "//get the model",
+                    "var model = Ext.ModelManager.getModel('Movies.model.Movie');",
+                    "",
+                    "// update model proxy",
+                    "model.setProxy(modelProxy);",
+                    ""
+                ],
+                "designer|userClassName": "updateMovieModelProxyUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen12524",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateMoviesStoreProxyUrl",
+                "implHandler": [
+                    "",
+                    "// proxy with the currect URL",
+                    "",
+                    "var storeProxy =   {",
+                    "    type: 'jsonp',",
+                    "    timeout: 1000,",
+                    "    extraParams: {",
+                    "        format: 'json'",
+                    "    },",
+                    "    url: this.getApplication().getMoviesServiceUrl(), // <----------------------------- the url",
+                    "    recordParam: '',",
+                    "    reader: {",
+                    "        type: 'json',",
+                    "        rootProperty: 'Movies'",
+                    "    }",
+                    "};",
+                    "",
+                    "//get the store",
+                    "var store = Ext.getStore('MoviesStore');",
+                    "",
+                    "// update store url",
+                    "store.setProxy(storeProxy);",
+                    "",
+                    "// load the store",
+                    "store.load();    ",
+                    "",
+                    "",
+                    ""
+                ],
+                "designer|userClassName": "updateMoviesStoreProxyUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen45502",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateMoviesStoreAndModelPRoxyUrl",
+                "implHandler": [
+                    "this.getApplication().updateMoviesStoreProxyUrl();",
+                    "this.getApplication().updateMovieModelProxyUrl();",
+                    ""
+                ],
+                "designer|userClassName": "updateMoviesStoreAndModelPRoxyUrl"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen2975",
+            "type": "fixedfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "launch",
+                "implHandler": [
+                    "",
+                    "if (Ext.os.is.Phone) {",
+                    "    Ext.create('Movies.view.MoviesNavigationView', {",
+                    "        fullscreen: true",
+                    "    });",
+                    "} else {",
+                    "    Ext.Viewport.add({",
+                    "        xclass: 'Movies.view.MoviesNavigationView',",
+                    "        width: 380,",
+                    "        height: 420,",
+                    "        centered: true,",
+                    "        modal: true,",
+                    "        hideOnMaskTap: false",
+                    "    }).show();",
+                    "}",
+                    "",
+                    "",
+                    "",
+                    "this.getApplication().updateMoviesStoreAndModelPRoxyUrl();"
+                ],
+                "designer|userClassName": "launch"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-basic-function",
+            "expanded": true
+        }
+    ]
+}

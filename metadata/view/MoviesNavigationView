@@ -1,0 +1,36 @@
+{
+    "id": "ExtBox1-ext-gen19117",
+    "type": "navigationview",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "id": "navView",
+        "designer|userClassName": "MoviesNavigationView",
+        "designer|userAlias": "moviesnavigationview"
+    },
+    "customConfigs": [],
+    "designerId": "344bcb68-2129-4e85-942e-599cac053805",
+    "$viewOrder": 3,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen19494",
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "Movies"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-linkedinstance",
+            "expanded": true,
+            "masterInstanceId": "ExtBox1-ext-gen13560"
+        }
+    ]
+}

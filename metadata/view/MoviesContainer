@@ -1,0 +1,301 @@
+{
+    "id": "ExtBox1-ext-gen13560",
+    "type": "container",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "layout": "fit",
+        "designer|userClassName": "MoviesContainer",
+        "designer|userAlias": "moviescontainer"
+    },
+    "customConfigs": [],
+    "designerId": "b9f7b125-7c2a-4f7d-9ea8-d80796ea9fe1",
+    "$viewOrder": 2,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen13827",
+            "type": "toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "ui": "neutral",
+                "designer|userClassName": "MyToolbar"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen4167",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": null,
+                        "itemId": "ResetDbButton",
+                        "ui": "action",
+                        "text": "Reset DB",
+                        "designer|userClassName": "MyButton2"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen14039",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onResetDbButtonTap",
+                                "implHandler": [
+                                    "var restServiceUrl = Movies.app.getApplication().getResetServiceUrl();",
+                                    "",
+                                    "var req = new XMLHttpRequest();",
+                                    "req.open('POST', restServiceUrl, false);",
+                                    "// req.overrideMimeType('text/plain; charset=x-user-defined'); // moz only",
+                                    "req.send(null);",
+                                    "if (req.status != 200) ",
+                                    "{",
+                                    "    Ext.Msg.alert('Error', 'Error while tring to reset the database.', Ext.emptyFn);",
+                                    "}",
+                                    "else",
+                                    "{",
+                                    "    Ext.Msg.alert('Info', 'The database is back to the original Top 5 movies..', Ext.emptyFn);",
+                                    "    //get the store",
+                                    "    var store = Ext.getStore('MoviesStore');",
+                                    "",
+                                    "    // reload the store",
+                                    "    store.load();",
+                                    "",
+                                    "}",
+                                    ""
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onResetDbButtonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen40724",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": null,
+                        "itemId": "changeServerUrlButton",
+                        "ui": "action",
+                        "text": "Change Server Url",
+                        "designer|userClassName": "MyButton2"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen41326",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onChangeServerUrlButtonTap",
+                                "implHandler": [
+                                    "Ext.Msg.prompt(",
+                                    "'Enter Url!',",
+                                    "'Enter server url',",
+                                    "function (buttonId, value) {",
+                                    "    if(buttonId == 'ok')",
+                                    "    {",
+                                    "        Movies.app.getApplication().setServicesRootUrl(value);",
+                                    "        //Movies.app.getApplication().updateMoviesStoreAndModelPRoxyUrl();",
+                                    "        history.go(0); // reload page",
+                                    "    }",
+                                    "},",
+                                    "null,",
+                                    "false,",
+                                    "Movies.app.getApplication().getServicesRootUrl(),",
+                                    "{ autoCapitalize : true, placeHolder : 'Some url...' }",
+                                    ");"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onChangeServerUrlButtonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen16100",
+                    "type": "spacer",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "designer|userClassName": "MySpacer"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen14143",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "docked": null,
+                        "itemId": "AddMovieButton",
+                        "ui": "action",
+                        "text": "Add",
+                        "designer|userClassName": "MyButton2"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen13005",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onAddMovieButtonTap",
+                                "implHandler": [
+                                    "// create a new record",
+                                    "var record = Ext.create('Movies.model.Movie', {",
+                                    "    Title: 'new movie',",
+                                    "    Rating: 0",
+                                    "});",
+                                    "",
+                                    "",
+                                    "record.save({",
+                                    "        scope: this,",
+                                    "        failure: function(record, operation) {",
+                                    "            //do something if the load failed",
+                                    "            Ext.Msg.alert('Server Error', 'Can not add the new record.', Ext.emptyFn);",
+                                    "        },",
+                                    "        success: function(record, operation) {",
+                                    "            //do something if the load succeeded",
+                                    "",
+                                    "            //get the store",
+                                    "            var store = Ext.getStore('MoviesStore');",
+                                    "            // update the store",
+                                    "            store.add(record);",
+                                    "            ",
+                                    "            // navigate to the movie edit form + update the title",
+                                    "            var navView = Ext.getCmp('navView');",
+                                    "            navView.push({",
+                                    "                xtype: 'movieformpanel',",
+                                    "                title: 'Edit Movie'",
+                                    "            });",
+                                    "            ",
+                                    "            // get the form (this line needs to come after the navView.push - else the form will not exist the first time)",
+                                    "            var movieForm = Ext.getCmp('movieformpanel');",
+                                    "            ",
+                                    "            // sets the form record - meaning data - based on the parameter we got from the list",
+                                    "            movieForm.setRecord(record);",
+                                    "            ",
+                                    "            Ext.Msg.alert('Info', 'A new record was added, edit it.', Ext.emptyFn);",
+                                    "            ",
+                                    "            ",
+                                    "        },",
+                                    "        callback: function(record, operation) {",
+                                    "            //do something whether the load succeeded or failed",
+                                    "        }",
+                                    "    });        ",
+                                    "",
+                                    "",
+                                    ""
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onAddMovieButtonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen16878",
+            "type": "linkedinstance",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": null,
+                "height": null,
+                "itemId": "mylist1"
+            },
+            "customConfigs": [],
+            "iconCls": "icon-linkedinstance",
+            "expanded": true,
+            "masterInstanceId": "ExtBox1-ext-gen4438",
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen28239",
+                    "type": "basiceventbinding",
+                    "reference": {
+                        "name": "listeners",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "onListItemTap",
+                        "implHandler": [
+                            "// navigate to the movie edit form + update the title",
+                            "var navView = Ext.getCmp('navView');",
+                            "navView.push({",
+                            "    xtype: 'movieformpanel',",
+                            "    title: 'Edit Movie'",
+                            "});",
+                            "",
+                            "// get the form (this line needs to come after the navView.push - else the form will not exist the first time)",
+                            "var movieForm = Ext.getCmp('movieformpanel');",
+                            "",
+                            "// sets the form record - meaning data - based on the parameter we got from the list",
+                            "movieForm.setRecord(record);",
+                            "",
+                            "",
+                            ""
+                        ],
+                        "name": "itemtap",
+                        "designer|userClassName": "onListItemTap"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}

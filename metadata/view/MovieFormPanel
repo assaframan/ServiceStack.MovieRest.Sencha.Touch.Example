@@ -1,0 +1,554 @@
+{
+    "id": "ExtBox1-ext-gen9320",
+    "type": "formpanel",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "height": "",
+        "id": "movieformpanel",
+        "tpl": null,
+        "ui": "",
+        "designer|userClassName": "MovieFormPanel",
+        "designer|userAlias": "movieformpanel"
+    },
+    "customConfigs": [],
+    "designerId": "6689252e-bf36-4b45-ab4a-c25e12c63306",
+    "$viewOrder": 1,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen70027",
+            "type": "toolbar",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "docked": "top",
+                "ui": "neutral",
+                "designer|userClassName": "MyToolbar1"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen77017",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "itemId": "updatebutton",
+                        "ui": "action",
+                        "text": "Update",
+                        "designer|userClassName": "MyButton"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen77022",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onUpdatebuttonTap",
+                                "implHandler": [
+                                    "// get the toolbar (up means parent)",
+                                    "var toolbar =  button.up();",
+                                    "// get the form (up means parent)",
+                                    "var form =  toolbar.up();",
+                                    "// get the record from the form",
+                                    "var record = form.getRecord();",
+                                    "// update the form data",
+                                    "record.set(form.getValues());",
+                                    "// save the record",
+                                    "record.save({",
+                                    "        scope: this,",
+                                    "        failure: function(record, operation) {",
+                                    "            //do something if the load failed",
+                                    "            Ext.Msg.alert('Server Error', 'Can not update the record.', Ext.emptyFn);",
+                                    "        },",
+                                    "        success: function(record, operation) {",
+                                    "            //do something if the load succeeded",
+                                    "            Ext.Msg.alert('Info', 'record was updated to the web.', Ext.emptyFn);",
+                                    "        },",
+                                    "        callback: function(record, operation) {",
+                                    "            //do something whether the load succeeded or failed",
+                                    "        }",
+                                    "    });",
+                                    "",
+                                    ""
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onUpdatebuttonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen11516",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "deletebutton",
+                        "ui": "action",
+                        "text": "Delete",
+                        "designer|userClassName": "MyButton1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen61828",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onDeletebuttonTap",
+                                "implHandler": [
+                                    "",
+                                    "var deleteRecord =  function ()",
+                                    "{",
+                                    "    // get the toolbar (up means parent)",
+                                    "    var toolbar =  button.up();",
+                                    "    // get the form (up means parent)",
+                                    "    var form =  toolbar.up();",
+                                    "    // get the record from the form",
+                                    "    var record = form.getRecord();",
+                                    "",
+                                    "    // delete the record (this means DELETE command will be sent to the web service)",
+                                    "    record.erase({",
+                                    "        scope: this,",
+                                    "        failure: function(record, operation) {",
+                                    "            //do something if the load failed",
+                                    "            Ext.Msg.alert('Server Error', 'Can not delete the record.', Ext.emptyFn);",
+                                    "        },",
+                                    "        success: function(record, operation) {",
+                                    "            //do something if the load succeeded",
+                                    "",
+                                    "            //get the store",
+                                    "            var store = Ext.getStore('MoviesStore');",
+                                    "            // remove the record from the store",
+                                    "            store.remove(record);",
+                                    "        ",
+                                    "            //  message about the change",
+                                    "            Ext.Msg.alert('Info', 'record was deleted.', Ext.emptyFn);",
+                                    "        ",
+                                    "            // navigate to the movie edit form + update the title",
+                                    "            var navView = Ext.getCmp('navView');",
+                                    "        ",
+                                    "            // get back to the list",
+                                    "            navView.pop(); ",
+                                    "            ",
+                                    "        },",
+                                    "        callback: function(record, operation) {",
+                                    "            //do something whether the load succeeded or failed",
+                                    "        }",
+                                    "    });        ",
+                                    "};",
+                                    "",
+                                    "// ask before we delete",
+                                    "Ext.Msg.confirm(",
+                                    "'Confirm',",
+                                    "'Are you sure you want to delete the record?',",
+                                    "function(buttonId) ",
+                                    "{",
+                                    "    if(buttonId == 'yes')",
+                                    "    {",
+                                    "        deleteRecord();",
+                                    "    }",
+                                    "}",
+                                    ");",
+                                    ""
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onDeletebuttonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen11309",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "itemId": "savebutton",
+                        "ui": "action",
+                        "text": "Duplicate",
+                        "designer|userClassName": "MyButton"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen79229",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onSavebuttonTap",
+                                "implHandler": [
+                                    "// get the toolbar (up means parent)",
+                                    "var toolbar =  button.up();",
+                                    "// get the form (up means parent)",
+                                    "var form =  toolbar.up();",
+                                    "// create a new record",
+                                    "var record = Ext.create('Movies.model.Movie', {});",
+                                    "// update the form data",
+                                    "record.set(form.getValues());",
+                                    "// save the record to db",
+                                    "record.save({",
+                                    "        scope: this,",
+                                    "        failure: function(record, operation) {",
+                                    "            //do something if the load failed",
+                                    "            Ext.Msg.alert('Server Error', 'Can not save the new record.', Ext.emptyFn);",
+                                    "        },",
+                                    "        success: function(record, operation) {",
+                                    "            //do something if the load succeeded",
+                                    "",
+                                    "            // update the form to use the new record",
+                                    "            form.setRecord(record);",
+                                    "            //get the store",
+                                    "            var store = Ext.getStore('MoviesStore');",
+                                    "            // update the store",
+                                    "            store.add(record);",
+                                    "            //  message about the change",
+                                    "            Ext.Msg.alert('Info', 'record was saved as a new record.', Ext.emptyFn);",
+                                    "            ",
+                                    "        },",
+                                    "        callback: function(record, operation) {",
+                                    "            //do something whether the load succeeded or failed",
+                                    "        }",
+                                    "    });        ",
+                                    "",
+                                    ""
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onSavebuttonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen75150",
+                    "type": "button",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "resetbutton",
+                        "ui": "action",
+                        "text": "Reset",
+                        "designer|userClassName": "MyButton1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen75977",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onResetbuttonTap",
+                                "implHandler": [
+                                    "// get the toolbar (up means parent)",
+                                    "var toolbar =  button.up();",
+                                    "// get the form (up means parent)",
+                                    "var form =  toolbar.up();",
+                                    "// get the record from the form",
+                                    "var record = form.getRecord();",
+                                    "// update the form data to the original state",
+                                    "form.setRecord(record);",
+                                    "//  message about the change",
+                                    "Ext.Msg.alert('Info', 'The record was change to the values from before your changes.', Ext.emptyFn);"
+                                ],
+                                "name": "tap",
+                                "designer|userClassName": "onResetbuttonTap"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ExtBox1-ext-gen26505",
+            "type": "image",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "border": null,
+                "height": 110,
+                "html": null,
+                "id": "movieImage",
+                "itemId": "movieImage",
+                "maxHeight": null,
+                "maxWidth": null,
+                "style": "background-size: 65%; ",
+                "ui": null,
+                "width": 159,
+                "src": "",
+                "designer|userClassName": "MyImage"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen2552",
+            "type": "fieldset",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "title": "Movie Info",
+                "designer|userClassName": "MyFieldSet"
+            },
+            "customConfigs": [],
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen68069",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "itemId": "ImdbId",
+                        "width": "",
+                        "label": "Imdb Id",
+                        "name": "ImdbId",
+                        "designer|userClassName": "MyTextField1"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen32964",
+                            "type": "basiceventbinding",
+                            "reference": {
+                                "name": "listeners",
+                                "type": "array"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "fn": "onImdbIdChange",
+                                "implHandler": [
+                                    "if(newValue && newValue !== '' )",
+                                    "{",
+                                    "",
+                                    "    var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');",
+                                    "",
+                                    "    Ext.getCmp('movieImage').setSrc('http://www.sanjeevflexipack.com/images/preloader_transparent.gif');",
+                                    "",
+                                    "    imdbMovieModel.load(newValue, {",
+                                    "        scope: this,",
+                                    "        failure: function(record, operation) {",
+                                    "            //do something if the load failed",
+                                    "            Ext.Msg.alert('Error', 'Id not found in IMDB!', Ext.emptyFn);",
+                                    "            Ext.getCmp('movieImage').setSrc('http://www.formhandler.net/images/image-not-found.gif');",
+                                    "        },",
+                                    "        success: function(record, operation) {",
+                                    "            //do something if the load succeeded",
+                                    "            Ext.getCmp('movieImage').setSrc(record.get('Poster'));",
+                                    "        },",
+                                    "        callback: function(record, operation) {",
+                                    "            //do something whether the load succeeded or failed",
+                                    "        }",
+                                    "    });",
+                                    "}",
+                                    "else",
+                                    "{",
+                                    "    Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');",
+                                    "}"
+                                ],
+                                "name": "change",
+                                "designer|userClassName": "onImdbIdChange"
+                            },
+                            "customConfigs": [],
+                            "expanded": true
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen10199",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": null,
+                        "width": "",
+                        "label": "Title",
+                        "name": "Title",
+                        "designer|userClassName": "MyTextField"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen10206",
+                    "type": "numberfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "label": "Rating",
+                        "name": "Rating",
+                        "designer|userClassName": "MyNumberField"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen6142",
+                    "type": "datepickerfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "label": "Release Date",
+                        "name": "ReleaseDate",
+                        "placeHolder": null,
+                        "dateFormat": null,
+                        "designer|userClassName": "MyDateField"
+                    },
+                    "customConfigs": [],
+                    "expanded": true,
+                    "cn": [
+                        {
+                            "id": "ExtBox1-ext-gen6151",
+                            "type": "datepicker",
+                            "reference": {
+                                "name": "picker",
+                                "type": "object"
+                            },
+                            "codeClass": null,
+                            "userConfig": {
+                                "designer|userClassName": "MyDatePicker"
+                            },
+                            "customConfigs": [],
+                            "expanded": true,
+                            "cn": [
+                                {
+                                    "id": "ExtBox1-ext-gen6162",
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "doneButton",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Done",
+                                        "designer|userClassName": "MyButton6"
+                                    },
+                                    "customConfigs": [],
+                                    "expanded": true
+                                },
+                                {
+                                    "id": "ExtBox1-ext-gen6171",
+                                    "type": "button",
+                                    "reference": {
+                                        "name": "cancelButton",
+                                        "type": "object"
+                                    },
+                                    "codeClass": null,
+                                    "userConfig": {
+                                        "text": "Cancel",
+                                        "designer|userClassName": "MyButton7"
+                                    },
+                                    "customConfigs": [],
+                                    "expanded": true
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "id": "ExtBox1-ext-gen69060",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "label": "Tag Line",
+                        "name": "TagLine",
+                        "designer|userClassName": "MyTextField4"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                },
+                {
+                    "id": "ExtBox1-ext-gen69288",
+                    "type": "textfield",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "height": 112,
+                        "label": "Genres",
+                        "name": "Genres",
+                        "designer|userClassName": "MyTextField5"
+                    },
+                    "customConfigs": [],
+                    "expanded": true
+                }
+            ]
+        }
+    ]
+}
