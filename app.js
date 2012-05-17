@@ -151,7 +151,6 @@ Ext.application({
 
         var storeProxy =   {
             type: 'jsonp',
-            timeout: 1000,
             extraParams: {
                 format: 'json'
             },
@@ -202,6 +201,9 @@ Ext.application({
 
 
         this.getApplication().updateMoviesStoreAndModelPRoxyUrl();
+
+        Movies.app.disableNextImdbRecordUpdate = false;
+
     }
 
 });

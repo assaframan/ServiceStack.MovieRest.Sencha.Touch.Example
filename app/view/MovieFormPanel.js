@@ -237,7 +237,9 @@ Ext.define('Movies.view.MovieFormPanel', {
                 //do something if the load succeeded
 
                 // update the form to use the new record
+                Movies.app.disableNextImdbRecordUpdate = true;
                 form.setRecord(record);
+
                 //get the store
                 var store = Ext.getStore('MoviesStore');
                 // update the store
@@ -262,6 +264,7 @@ Ext.define('Movies.view.MovieFormPanel', {
         // get the record from the form
         var record = form.getRecord();
         // update the form data to the original state
+        Movies.app.disableNextImdbRecordUpdate = true;
         form.setRecord(record);
         //  message about the change
         Ext.Msg.alert('Info', 'The record was change to the values from before your changes.', Ext.emptyFn);
@@ -270,7 +273,7 @@ Ext.define('Movies.view.MovieFormPanel', {
     onImdbIdChange: function(textfield, newValue, oldValue, options) {
         // disabled for now - doesn't seem to work on the iPhone
 
-        if(newValue && newValue !== '' )
+        if(newValue && newValue !== '' && newValue != oldValue )
         {
 
             var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');
@@ -287,15 +290,33 @@ Ext.define('Movies.view.MovieFormPanel', {
                 success: function(record, operation) {
                     //do something if the load succeeded
                     Ext.getCmp('movieImage').setSrc(record.get('Poster'));
+
+                    if ( Movies.app.disableNextImdbRecordUpdate === false )
+                    {
+                        // get the form 
+                        var form = Ext.getCmp('movieformpanel');
+                        form.setValues({
+                            Title: record.get('Title'),
+                            Rating: record.get('imdbRating'),
+                            ReleaseDate: record.get('Released'),
+                            TagLine: record.get('Plot'),
+                            Genres: record.get('Genre')
+                        });
+
+                        Ext.Msg.alert('Updated', 'Updated the data from IMDB', Ext.emptyFn);
+                    }
+
                 },
                 callback: function(record, operation) {
                     //do something whether the load succeeded or failed
+                    Movies.app.disableNextImdbRecordUpdate = false;
                 }
             });
         }
         else
         {
             Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+            Movies.app.disableNextImdbRecordUpdate = false;
         }
 
     }

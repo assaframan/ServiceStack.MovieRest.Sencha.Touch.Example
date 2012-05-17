@@ -24,6 +24,23 @@ Ext.define('Movies.model.ImdbMovie', {
             },
             {
                 name: 'Poster'
+            },
+            {
+                name: 'Title'
+            },
+            {
+                name: 'imdbRating'
+            },
+            {
+                dateFormat: 'd M Y',
+                name: 'Released',
+                type: 'date'
+            },
+            {
+                name: 'Plot'
+            },
+            {
+                name: 'Genre'
             }
         ],
         proxy: {

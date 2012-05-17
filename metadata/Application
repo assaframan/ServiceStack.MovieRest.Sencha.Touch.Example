@@ -285,7 +285,6 @@
                     "",
                     "var storeProxy =   {",
                     "    type: 'jsonp',",
-                    "    timeout: 1000,",
                     "    extraParams: {",
                     "        format: 'json'",
                     "    },",
@@ -363,7 +362,10 @@
                     "",
                     "",
                     "",
-                    "this.getApplication().updateMoviesStoreAndModelPRoxyUrl();"
+                    "this.getApplication().updateMoviesStoreAndModelPRoxyUrl();",
+                    "",
+                    "Movies.app.disableNextImdbRecordUpdate = false;",
+                    ""
                 ],
                 "designer|userClassName": "launch"
             },

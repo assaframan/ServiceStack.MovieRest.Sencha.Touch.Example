@@ -191,8 +191,8 @@ Ext.define('Movies.view.MoviesContainer', {
         var movieForm = Ext.getCmp('movieformpanel');
 
         // sets the form record - meaning data - based on the parameter we got from the list
+        Movies.app.disableNextImdbRecordUpdate = true;
         movieForm.setRecord(record);
-
 
 
     }
