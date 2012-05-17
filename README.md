@@ -10,7 +10,7 @@ This code demonstrate how to use [Sencha Touch 2]( http://www.sencha.com/product
 
 The server side is the example [ServiceStack.MovieRest]( https://github.com/ServiceStack/ServiceStack.Examples) – created by the ServiceStack team.
 I have used [AppHarbor](http://appharbor.com) to host the server side. 
-* I create [this](https://github.com/assaframan/MoviesRestForAppHarbor) git repository - it is a copy of ServiceStack's examples repository - I just renamed ServiceStack.MovieRest.sln to AppHarbor.sln so AppHarbor will know it is the solution I want to host.
+* I created [this](https://github.com/assaframan/MoviesRestForAppHarbor) git repository - it is a copy of ServiceStack's examples repository - I just renamed ServiceStack.MovieRest.sln to AppHarbor.sln so AppHarbor will know it is the solution I want to host.
 * My AppHarbor service root address is this: http://moviesrest.apphb.com
 * You can view the original MovieRest webpage demo here: http://moviesrest.apphb.com/default.htm
 * This is the movies REST service: http://moviesrest.apphb.com/movies
