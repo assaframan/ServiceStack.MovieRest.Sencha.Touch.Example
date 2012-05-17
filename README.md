@@ -9,7 +9,7 @@ I am starting with the live demo as it is the first thing I look for in similer 
 This code demonstrate how to use [Sencha Touch 2]( http://www.sencha.com/products/touch/) with [Service Stack]( http://www.servicestack.net/) used as a REST web service.
 
 The server side is the example [ServiceStack.MovieRest]( https://github.com/ServiceStack/ServiceStack.Examples) – created by the ServiceStack team.
-I have used AppHarbor to host the server side. 
+I have used [AppHarbor](http://appharbor.com) to host the server side. 
 * I create [this](https://github.com/assaframan/MoviesRestForAppHarbor) git repository - it is a copy of ServiceStack's examples repository - I just renamed ServiceStack.MovieRest.sln to AppHarbor.sln so AppHarbor will know it is the solution I want to host.
 * My AppHarbor service root address is this: http://moviesrest.apphb.com
 * You can view the original MovieRest webpage demo here: http://moviesrest.apphb.com/default.htm
@@ -36,7 +36,7 @@ The Sencha Touch app was built using [Sencha Architect 2](http://www.sencha.com/
 * You can view the HTTP request using [Fiddler](http://www.fiddler2.com).
 * The Chrome JavaScript console helps to see if the request fails.
 * The main reason my requests failed was that I worked "cross domain"\"cross site" – meaning my app had a different URL address root then the web service.
-* When requesting data using XMLHttpRequest the server needs add the some   response headers to its HTTP result.
+* When requesting data using XMLHttpRequest the server needs to add the some response headers (same as it got when calling OPTIONS) to its HTTP result.
 * The default for more servers is not to have the needed response headers – meaning XMLHttpRequest fails. This is what I need to fix in the ServiceStack.MovieRest example.
 * You can read more about the "cross domain"\"cross site"\"HTTP access control (CORS)" and what response headers are needed [here](https://developer.mozilla.org/en/http_access_control) or search Google for: Access-Control-Allow-Methods or Access-Control-Allow-Origin or Access-Control-Allow-Headers.
 
