@@ -34,6 +34,7 @@ Ext.define('Movies.view.MovieFormPanel', {
             {
                 xtype: 'toolbar',
                 docked: 'top',
+                id: 'movieToolBar',
                 ui: 'neutral',
                 items: [
                     {
@@ -71,33 +72,39 @@ Ext.define('Movies.view.MovieFormPanel', {
                         itemId: 'ImdbId',
                         width: '',
                         label: 'Imdb Id',
+                        labelWidth: '35%',
                         name: 'ImdbId'
                     },
                     {
                         xtype: 'textfield',
                         width: '',
                         label: 'Title',
+                        labelWidth: '35%',
                         name: 'Title'
                     },
                     {
                         xtype: 'numberfield',
                         label: 'Rating',
+                        labelWidth: '35%',
                         name: 'Rating'
                     },
                     {
                         xtype: 'datepickerfield',
-                        label: 'Release Date',
+                        label: 'Released',
+                        labelWidth: '35%',
                         name: 'ReleaseDate'
                     },
                     {
                         xtype: 'textfield',
                         label: 'Tag Line',
+                        labelWidth: '35%',
                         name: 'TagLine'
                     },
                     {
                         xtype: 'textfield',
                         height: 112,
                         label: 'Genres',
+                        labelWidth: '35%',
                         name: 'Genres'
                     }
                 ]
@@ -273,7 +280,7 @@ Ext.define('Movies.view.MovieFormPanel', {
     onImdbIdChange: function(textfield, newValue, oldValue, options) {
         // disabled for now - doesn't seem to work on the iPhone
 
-        if(newValue && newValue !== '' && newValue != oldValue && Movies.app.disableImdbRecordUpdate == false )
+        if(newValue && newValue !== '' && newValue != oldValue && Movies.app.disableImdbRecordUpdate === false )
         {
 
             var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');

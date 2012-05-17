@@ -19,8 +19,7 @@
             "MoviesList",
             "MovieFormPanel",
             "MoviesContainer",
-            "MoviesNavigationView",
-            "MyImage"
+            "MoviesNavigationView"
         ],
         "name": "Movies"
     },
@@ -350,8 +349,9 @@
                     "    Ext.create('Movies.view.MoviesNavigationView', {",
                     "        fullscreen: true",
                     "    });",
-                    "    ",
+                    "",
                     "    Movies.app.disableImdbRecordUpdate = true; // doesn't work on mobile devices from some unknown reason",
+                    "",
                     "} else {",
                     "    Ext.Viewport.add({",
                     "        xclass: 'Movies.view.MoviesNavigationView',",
@@ -361,6 +361,8 @@
                     "        modal: true,",
                     "        hideOnMaskTap: false",
                     "    }).show();",
+                    "",
+                    "    Movies.app.disableImdbRecordUpdate = false; ",
                     "}",
                     "",
                     "",

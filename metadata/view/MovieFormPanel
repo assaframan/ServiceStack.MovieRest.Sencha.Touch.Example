@@ -39,7 +39,7 @@
                 "ui": null,
                 "width": 159,
                 "src": "",
-                "designer|userClassName": "MyImage"
+                "designer|userClassName": "MovieImage"
             },
             "customConfigs": [],
             "expanded": true
@@ -54,8 +54,9 @@
             "codeClass": null,
             "userConfig": {
                 "docked": "top",
+                "id": "movieToolBar",
                 "ui": "neutral",
-                "designer|userClassName": "MyToolbar1"
+                "designer|userClassName": "MovieToolBar"
             },
             "customConfigs": [],
             "expanded": true,
@@ -73,7 +74,7 @@
                         "itemId": "updatebutton",
                         "ui": "action",
                         "text": "Update",
-                        "designer|userClassName": "MyButton"
+                        "designer|userClassName": "UpdateButton"
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -135,7 +136,7 @@
                         "itemId": "deletebutton",
                         "ui": "action",
                         "text": "Delete",
-                        "designer|userClassName": "MyButton1"
+                        "designer|userClassName": "DeleteButton"
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -227,7 +228,7 @@
                         "itemId": "savebutton",
                         "ui": "action",
                         "text": "Duplicate",
-                        "designer|userClassName": "MyButton"
+                        "designer|userClassName": "DuplicateButton"
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -300,7 +301,7 @@
                         "itemId": "resetbutton",
                         "ui": "action",
                         "text": "Reset",
-                        "designer|userClassName": "MyButton1"
+                        "designer|userClassName": "ResetButton"
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -347,8 +348,9 @@
             },
             "codeClass": null,
             "userConfig": {
+                "width": null,
                 "title": "Movie Info",
-                "designer|userClassName": "MyFieldSet"
+                "designer|userClassName": "MovieFieldSet"
             },
             "customConfigs": [],
             "expanded": true,
@@ -365,8 +367,9 @@
                         "itemId": "ImdbId",
                         "width": "",
                         "label": "Imdb Id",
+                        "labelWidth": "35%",
                         "name": "ImdbId",
-                        "designer|userClassName": "MyTextField1"
+                        "designer|userClassName": "ImdbIdTextField"
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -384,50 +387,50 @@
                                 "implHandler": [
                                     "// disabled for now - doesn't seem to work on the iPhone",
                                     "",
-                                    "if(newValue && newValue !== '' && newValue != oldValue && Movies.app.disableImdbRecordUpdate == false )",
+                                    "if(newValue && newValue !== '' && newValue != oldValue && Movies.app.disableImdbRecordUpdate === false )",
                                     "{",
-                                    "    ",
+                                    "",
                                     "    var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');",
-                                    "    ",
+                                    "",
                                     "    Ext.getCmp('movieImage').setSrc('http://www.sanjeevflexipack.com/images/preloader_transparent.gif');",
-                                    "    ",
+                                    "",
                                     "    imdbMovieModel.load(newValue, {",
                                     "        scope: this,",
                                     "        failure: function(record, operation) {",
-                                    "                //do something if the load failed",
-                                    "                Ext.Msg.alert('Error', 'Id not found in IMDB!', Ext.emptyFn);",
-                                    "                Ext.getCmp('movieImage').setSrc('http://www.formhandler.net/images/image-not-found.gif');",
-                                    "            },",
-                                    "            success: function(record, operation) {",
-                                    "                //do something if the load succeeded",
-                                    "                Ext.getCmp('movieImage').setSrc(record.get('Poster'));",
-                                    "                ",
-                                    "                if ( Movies.app.disableNextImdbRecordUpdate === false )",
+                                    "            //do something if the load failed",
+                                    "            Ext.Msg.alert('Error', 'Id not found in IMDB!', Ext.emptyFn);",
+                                    "            Ext.getCmp('movieImage').setSrc('http://www.formhandler.net/images/image-not-found.gif');",
+                                    "        },",
+                                    "        success: function(record, operation) {",
+                                    "            //do something if the load succeeded",
+                                    "            Ext.getCmp('movieImage').setSrc(record.get('Poster'));",
+                                    "",
+                                    "            if ( Movies.app.disableNextImdbRecordUpdate === false )",
+                                    "            {",
+                                    "                // ask before we update",
+                                    "                Ext.Msg.confirm(",
+                                    "                'Confirm',",
+                                    "                'Do you want to update this record with information from IMDB?',",
+                                    "                function(buttonId) ",
                                     "                {",
-                                    "                    // ask before we update",
-                                    "                    Ext.Msg.confirm(",
-                                    "                    'Confirm',",
-                                    "                    'Do you want to update this record with information from IMDB?',",
-                                    "                    function(buttonId) ",
+                                    "                    if(buttonId == 'yes')",
                                     "                    {",
-                                    "                        if(buttonId == 'yes')",
-                                    "                        {",
-                                    "                            // get the form ",
-                                    "                            var form = Ext.getCmp('movieformpanel');",
-                                    "                            form.setValues({",
-                                    "                                Title: record.get('Title'),",
-                                    "                                Rating: record.get('imdbRating'),",
-                                    "                                ReleaseDate: record.get('Released'),",
-                                    "                                TagLine: record.get('Plot'),",
-                                    "                                Genres: record.get('Genre')",
-                                    "                            });",
-                                    "                        }",
+                                    "                        // get the form ",
+                                    "                        var form = Ext.getCmp('movieformpanel');",
+                                    "                        form.setValues({",
+                                    "                            Title: record.get('Title'),",
+                                    "                            Rating: record.get('imdbRating'),",
+                                    "                            ReleaseDate: record.get('Released'),",
+                                    "                            TagLine: record.get('Plot'),",
+                                    "                            Genres: record.get('Genre')",
+                                    "                        });",
                                     "                    }",
-                                    "                    );                ",
                                     "                }",
-                                    "                ",
-                                    "            },",
-                                    "            callback: function(record, operation) {",
+                                    "                );                ",
+                                    "            }",
+                                    "",
+                                    "        },",
+                                    "        callback: function(record, operation) {",
                                     "            //do something whether the load succeeded or failed",
                                     "            Movies.app.disableNextImdbRecordUpdate = false;",
                                     "        }",
@@ -469,8 +472,9 @@
                         "height": null,
                         "width": "",
                         "label": "Title",
+                        "labelWidth": "35%",
                         "name": "Title",
-                        "designer|userClassName": "MyTextField"
+                        "designer|userClassName": "TitleTextField"
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -485,8 +489,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "label": "Rating",
+                        "labelWidth": "35%",
                         "name": "Rating",
-                        "designer|userClassName": "MyNumberField"
+                        "designer|userClassName": "RatingNumberField"
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -500,11 +505,12 @@
                     },
                     "codeClass": null,
                     "userConfig": {
-                        "label": "Release Date",
+                        "label": "Released",
+                        "labelWidth": "35%",
                         "name": "ReleaseDate",
                         "placeHolder": null,
                         "dateFormat": null,
-                        "designer|userClassName": "MyDateField"
+                        "designer|userClassName": "ReleaseDateDateField"
                     },
                     "customConfigs": [],
                     "expanded": true,
@@ -518,7 +524,7 @@
                             },
                             "codeClass": null,
                             "userConfig": {
-                                "designer|userClassName": "MyDatePicker"
+                                "designer|userClassName": "ReleaseDateDatePicker"
                             },
                             "customConfigs": [],
                             "expanded": true,
@@ -533,7 +539,7 @@
                                     "codeClass": null,
                                     "userConfig": {
                                         "text": "Done",
-                                        "designer|userClassName": "MyButton6"
+                                        "designer|userClassName": "ReleaseDateDatePickerDoneButton"
                                     },
                                     "customConfigs": [],
                                     "expanded": true
@@ -567,8 +573,9 @@
                     "codeClass": null,
                     "userConfig": {
                         "label": "Tag Line",
+                        "labelWidth": "35%",
                         "name": "TagLine",
-                        "designer|userClassName": "MyTextField4"
+                        "designer|userClassName": "TagLineTextField"
                     },
                     "customConfigs": [],
                     "expanded": true
@@ -584,8 +591,9 @@
                     "userConfig": {
                         "height": 112,
                         "label": "Genres",
+                        "labelWidth": "35%",
                         "name": "Genres",
-                        "designer|userClassName": "MyTextField5"
+                        "designer|userClassName": "GenresTextField"
                     },
                     "customConfigs": [],
                     "expanded": true

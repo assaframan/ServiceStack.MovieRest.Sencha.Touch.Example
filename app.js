@@ -30,8 +30,7 @@ Ext.application({
         'MoviesList',
         'MovieFormPanel',
         'MoviesContainer',
-        'MoviesNavigationView',
-        'MyImage'
+        'MoviesNavigationView'
     ],
     name: 'Movies',
 
@@ -190,6 +189,7 @@ Ext.application({
             });
 
             Movies.app.disableImdbRecordUpdate = true; // doesn't work on mobile devices from some unknown reason
+
         } else {
             Ext.Viewport.add({
                 xclass: 'Movies.view.MoviesNavigationView',
@@ -199,6 +199,8 @@ Ext.application({
                 modal: true,
                 hideOnMaskTap: false
             }).show();
+
+            Movies.app.disableImdbRecordUpdate = false; 
         }
 
 
