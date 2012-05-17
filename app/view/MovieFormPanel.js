@@ -273,7 +273,7 @@ Ext.define('Movies.view.MovieFormPanel', {
     onImdbIdChange: function(textfield, newValue, oldValue, options) {
         // disabled for now - doesn't seem to work on the iPhone
 
-        if(newValue && newValue !== '' && newValue != oldValue )
+        if(newValue && newValue !== '' && newValue != oldValue && Movies.app.disableImdbRecordUpdate == false )
         {
 
             var imdbMovieModel = Ext.ModelMgr.getModel('Movies.model.ImdbMovie');
@@ -324,7 +324,14 @@ Ext.define('Movies.view.MovieFormPanel', {
         }
         else
         {
-            Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+            if (Movies.app.disableImdbRecordUpdate)
+            {
+                Ext.getCmp('movieImage').setHidden(true);
+            }
+            else
+            {
+                Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
+            }
             Movies.app.disableNextImdbRecordUpdate = false;
         }
 

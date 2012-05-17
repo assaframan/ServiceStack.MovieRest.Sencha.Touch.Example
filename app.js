@@ -30,7 +30,8 @@ Ext.application({
         'MoviesList',
         'MovieFormPanel',
         'MoviesContainer',
-        'MoviesNavigationView'
+        'MoviesNavigationView',
+        'MyImage'
     ],
     name: 'Movies',
 
@@ -187,6 +188,8 @@ Ext.application({
             Ext.create('Movies.view.MoviesNavigationView', {
                 fullscreen: true
             });
+
+            Movies.app.disableImdbRecordUpdate = true; // doesn't work on mobile devices from some unknown reason
         } else {
             Ext.Viewport.add({
                 xclass: 'Movies.view.MoviesNavigationView',
