@@ -29,6 +29,15 @@ Ext.define('Movies.view.MoviesList', {
         ],
         plugins: [
             {
+                refreshFn: function(plugin) {
+                    //get the store
+                    var store = Ext.getStore('MoviesStore');
+
+
+                    // sync the store
+                    store.load();    
+
+                },
                 type: 'pullrefresh'
             }
         ]

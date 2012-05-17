@@ -33,7 +33,37 @@
                 "designer|userClassName": "MyPullRefreshPlugin"
             },
             "customConfigs": [],
-            "expanded": true
+            "expanded": true,
+            "cn": [
+                {
+                    "id": "ExtBox1-ext-gen6214",
+                    "type": "fixedfunction",
+                    "reference": {
+                        "name": "items",
+                        "type": "array"
+                    },
+                    "codeClass": null,
+                    "userConfig": {
+                        "fn": "refreshFn",
+                        "designer|params": [
+                            "plugin"
+                        ],
+                        "implHandler": [
+                            "//get the store",
+                            "var store = Ext.getStore('MoviesStore');",
+                            "",
+                            "",
+                            "// sync the store",
+                            "store.load();    ",
+                            ""
+                        ],
+                        "designer|userClassName": "refreshFn"
+                    },
+                    "customConfigs": [],
+                    "iconCls": "icon-basic-function",
+                    "expanded": true
+                }
+            ]
         }
     ]
 }
