@@ -30,8 +30,7 @@ Ext.application({
         'MoviesList',
         'MovieFormPanel',
         'MoviesContainer',
-        'MoviesNavigationView',
-        'MyImage'
+        'MoviesNavigationView'
     ],
     name: 'Movies',
 
@@ -48,14 +47,14 @@ Ext.application({
     },
 
     getDefaultServicesRootUrl: function() {
-        return 'http://www.servicestack.net/ServiceStack.MovieRest';
+        return 'http://moviesrest.apphb.com';
         //return 'http://localhost:55867'; // I use this url for local debug
 
     },
 
     setServicesRootUrl: function(newRootUrl) {
         var GlobalSettings = Ext.create('Movies.model.GlobalAppSettings', {
-            id: 1,
+            id: this.getApplication().getDefaultServicesRootUrl(),
             RootUrl : newRootUrl
         });
 
@@ -78,7 +77,7 @@ Ext.application({
 
         var GlobalAppSettingsModel = Ext.ModelMgr.getModel('Movies.model.GlobalAppSettings');
 
-        GlobalAppSettingsModel.load(1, {
+        GlobalAppSettingsModel.load(this.getApplication().getDefaultServicesRootUrl(), {
             scope: this,
             failure: function(record, operation) {
                 //do something if the load failed
@@ -104,7 +103,7 @@ Ext.application({
     },
 
     getResetServiceUrl: function() {
-        return this.getApplication().getServicesRootUrl() + "/reset-movies/?format=json";
+        return this.getApplication().getServicesRootUrl() + "/reset-movies?format=json";
     },
 
     getMoviesServiceUrl: function() {

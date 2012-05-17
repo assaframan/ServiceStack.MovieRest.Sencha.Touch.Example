@@ -14,7 +14,7 @@
     "customConfigs": [],
     "designerId": "004828df-7f6a-4edc-bce9-428c7a3a2f48",
     "$viewOrder": 1,
-    "expanded": false,
+    "expanded": true,
     "cn": [
         {
             "id": "ExtBox1-ext-gen10985",
@@ -55,7 +55,7 @@
             },
             "codeClass": null,
             "userConfig": {
-                "timeout": 1000,
+                "timeout": 10000,
                 "url": "http://www.imdbapi.com/",
                 "designer|userClassName": "MyJsonPProxy1"
             },

@@ -13,7 +13,7 @@
     },
     "customConfigs": [],
     "designerId": "b9f7b125-7c2a-4f7d-9ea8-d80796ea9fe1",
-    "$viewOrder": 3,
+    "$viewOrder": 2,
     "expanded": true,
     "cn": [
         {
@@ -77,15 +77,15 @@
                                     "        Ext.Msg.alert('Info', 'The database is back to the original Top 5 movies..', Ext.emptyFn);",
                                     "        //get the store",
                                     "        var store = Ext.getStore('MoviesStore');",
-                                    "    ",
+                                    "",
                                     "        // reload the store",
                                     "        store.load();",
-                                    "    ",
+                                    "",
                                     "    }",
                                     "}",
                                     "catch(err)",
                                     "{",
-                                    "        Ext.Msg.alert('Error', 'Error while tring to reset the database.', Ext.emptyFn);    ",
+                                    "    Ext.Msg.alert('Error', 'Error while tring to reset the database.', Ext.emptyFn);    ",
                                     "}",
                                     ""
                                 ],

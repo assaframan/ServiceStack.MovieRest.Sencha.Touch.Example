@@ -28,7 +28,7 @@ Ext.define('Movies.model.ImdbMovie', {
         ],
         proxy: {
             type: 'jsonp',
-            timeout: 1000,
+            timeout: 10000,
             url: 'http://www.imdbapi.com/',
             reader: {
                 type: 'json',

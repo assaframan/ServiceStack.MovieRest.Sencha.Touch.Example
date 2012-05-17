@@ -82,18 +82,10 @@
                 "app/model/GlobalAppSettings.js"
             ],
             "className": "GlobalAppSettings"
-        },
-        "68eb7418-c9ff-4a69-963c-76f7a84a68dc": {
-            "paths": [
-                "metadata/view/MyImage",
-                "app/view/override/MyImage.js",
-                "app/view/MyImage.js"
-            ],
-            "className": "MyImage"
         }
     },
     "expandedState": {
-        "data": true,
+        "data": false,
         "model": true,
         "component": true,
         "controller": true,
