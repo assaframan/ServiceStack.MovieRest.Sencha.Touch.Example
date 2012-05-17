@@ -293,17 +293,26 @@ Ext.define('Movies.view.MovieFormPanel', {
 
                     if ( Movies.app.disableNextImdbRecordUpdate === false )
                     {
-                        // get the form 
-                        var form = Ext.getCmp('movieformpanel');
-                        form.setValues({
-                            Title: record.get('Title'),
-                            Rating: record.get('imdbRating'),
-                            ReleaseDate: record.get('Released'),
-                            TagLine: record.get('Plot'),
-                            Genres: record.get('Genre')
-                        });
-
-                        Ext.Msg.alert('Updated', 'Updated the data from IMDB', Ext.emptyFn);
+                        // ask before we update
+                        Ext.Msg.confirm(
+                        'Confirm',
+                        'Do you want to update this record with information from IMDB?',
+                        function(buttonId) 
+                        {
+                            if(buttonId == 'yes')
+                            {
+                                // get the form 
+                                var form = Ext.getCmp('movieformpanel');
+                                form.setValues({
+                                    Title: record.get('Title'),
+                                    Rating: record.get('imdbRating'),
+                                    ReleaseDate: record.get('Released'),
+                                    TagLine: record.get('Plot'),
+                                    Genres: record.get('Genre')
+                                });
+                            }
+                        }
+                        );                
                     }
 
                 },
@@ -318,6 +327,8 @@ Ext.define('Movies.view.MovieFormPanel', {
             Ext.getCmp('movieImage').setSrc('http://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/600px-No_image_available.svg.png');
             Movies.app.disableNextImdbRecordUpdate = false;
         }
+
+
 
     }
 
