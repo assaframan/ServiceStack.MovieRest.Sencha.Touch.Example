@@ -26,7 +26,7 @@ The Sencha Touch app was built using [Sencha Architect 2](http://www.sencha.com/
 * Doing add, update, delete and clone REST record operations – with basic error handling.
 * The code supports cross domain XMLHttpRequest. (I needed to patch the ServiceStack.MovieRest to get this to work; my patches where committed to ServiceStack.MovieRest main repository in GitHub so don’t worry about it).
 
-### When developing this I found out more information about the way [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) works, here is what I learn:
+### When developing this I found out more information about the way [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) works, here is what I learned:
 * REST is a way to add, update and delete records on a web server using a web service.
 * REST uses HTTP verbs that I didn't know about, I am used to GET and POST, but REST uses also PUT and DELETE. 
 * POST means "create a record".
