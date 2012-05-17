@@ -9,6 +9,12 @@ I am starting with the live demo as it is the first thing I look for in similer 
 This code demonstrate how to use [Sencha Touch 2]( http://www.sencha.com/products/touch/) with [Service Stack]( http://www.servicestack.net/) used as a REST web service.
 
 The server side is the example [ServiceStack.MovieRest]( https://github.com/ServiceStack/ServiceStack.Examples) – created by the ServiceStack team.
+I have used AppHarbor to host the server side. I create [this](https://github.com/assaframan/MoviesRestForAppHarbor) git repository - it is a copy of ServiceStack's examples repository - I just renamed ServiceStack.MovieRest.sln to AppHarbor.sln so AppHarbor will know it is the solution I want to host.
+My AppHarbor service root address is this: http://moviesrest.apphb.com
+You can view the original MovieRest webpage demo here: http://moviesrest.apphb.com/default.htm
+This is the movies REST service: http://moviesrest.apphb.com/movies
+This is the movies database reset REST service: http://moviesrest.apphb.com/reset-movies
+All the services are as in the ServiceStack.Examples repo without any change. 
 
 The Sencha Touch app was built using [Sencha Architect 2](http://www.sencha.com/products/architect/), a great product - you should give it a try. You don't have to use Sencha Architect to modify the code (you can use any text editor). I do recommend trying Sencha Architect 2 (you can download a 30-day trial), the main reason for building this code was to learn how to use Sencha Architect – and I found it be a great time saver.
 
