@@ -135,6 +135,7 @@ Ext.define('Movies.view.MoviesContainer', {
         // create a new record
         var record = Ext.create('Movies.model.Movie', {
             Title: 'new movie',
+            ImdbId: '',
             Rating: 0
         });
 
