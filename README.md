@@ -25,6 +25,7 @@ The Sencha Touch app was built using [Sencha Architect 2](http://www.sencha.com/
 * Changing the REST web service URL dynamically inside the Sencha Touch app.
 * Doing add, update, delete and clone REST record operations – with basic error handling.
 * The code supports cross domain XMLHttpRequest. (I needed to patch the ServiceStack.MovieRest to get this to work; my patches where committed to ServiceStack.MovieRest main repository in GitHub so don’t worry about it).
+* Custom rating field (with stars and such) - based on this code - https://github.com/podlipensky/Ext.ux.touch.Rating/tree/sencha2
 
 ### When developing this I found out more information about the way [REST](http://en.wikipedia.org/wiki/Representational_state_transfer) works, here is what I learned:
 * REST is a way to add, update and delete records on a web server using a web service.
