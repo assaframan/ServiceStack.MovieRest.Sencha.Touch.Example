@@ -1,0 +1,411 @@
+{
+    "id": "ExtBox1-ext-gen60072",
+    "type": "field",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "inputCls": "x-rating-star-input",
+        "label": "Field",
+        "value": "-1",
+        "designer|userClassName": "RatingField",
+        "designer|userAlias": "RatingField",
+        "singleColorPerValue": false,
+        "layoutOnOrientationChange": true,
+        "minValue": -1,
+        "itemsCount": 5,
+        "itemCls": "x-rating-star",
+        "itemHoverCls": "x-rating-star-hover",
+        "showClear": false,
+        "defaultValue": -1,
+        "clearCls": "x-rating-clear",
+        "maxValue": 5
+    },
+    "customConfigs": [
+        {
+            "group": "(Custom Properties)",
+            "name": "singleColorPerValue",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "layoutOnOrientationChange",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "minValue",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "itemsCount",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "itemCls",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "itemHoverCls",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "showClear",
+            "type": "boolean"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "defaultValue",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "clearCls",
+            "type": "string"
+        },
+        {
+            "group": "(Custom Properties)",
+            "name": "maxValue",
+            "type": "string"
+        }
+    ],
+    "designerId": "dcc8f7c4-fed1-4e7e-acd9-c863308c78eb",
+    "$viewOrder": 4,
+    "expanded": true,
+    "cn": [
+        {
+            "id": "ExtBox1-ext-gen66373",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "beforeInitConfig",
+                "designer|params": [
+                    "config"
+                ],
+                "implHandler": [
+                    "    ",
+                    "Ext.apply(config, {",
+                    "        baseCls: Ext.baseCSSPrefix + 'field x-rating-field'",
+                    "    });",
+                    "    ",
+                    "Ext.apply(config, {",
+                    "        component: {",
+                    "            tpl: new Ext.XTemplate(",
+                    "                '<tpl for=\"items\">',",
+                    "                '<div index=\"{[xindex - 1]}\" class=\"{parent.itemCls} x-rating-item\">',",
+                    "                //'{tooltip}', TBD",
+                    "                '</div>',",
+                    "                '</tpl>',",
+                    "                '<tpl if=\"clearIcon\">',",
+                    "                '<div class=\"{clearCls}\">',",
+                    "                '</div>',",
+                    "                '</tpl>',",
+                    "\t\t\t{",
+                    "                compile: true",
+                    "\t\t\t}),",
+                    "            cls: 'x-rating-inner'",
+                    "        }",
+                    "    });",
+                    "",
+                    "",
+                    "this.callParent(config);"
+                ],
+                "designer|userClassName": "beforeInitConfig"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen74143",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "initialize",
+                "implHandler": [
+                    "var me = this;",
+                    "me.callParent();",
+                    "",
+                    "me.element.on({",
+                    "    scope: me,",
+                    "    touchstart: me.onTouchStart,",
+                    "    touchmove: me.onTouchMove,",
+                    "    preventDefault: true",
+                    "});"
+                ],
+                "designer|userClassName": "initialize"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen74235",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "updateComponent",
+                "designer|params": [
+                    "newComponent",
+                    "oldComponent"
+                ],
+                "implHandler": [
+                    "this.callParent(arguments);",
+                    "if (oldComponent) {",
+                    "    //TODO: cleanup event subscriptions",
+                    "    //this.clearBtn",
+                    "}",
+                    "var innerElement = this.innerElement,",
+                    "    cls = this.getCls();",
+                    "",
+                    "this.getComponent(); //why do we make this call?        ",
+                    "var newConfig = Ext.applyIf({",
+                    "    items: new Array(this.getItemsCount() || 0)",
+                    "}, this.config);        ",
+                    "newComponent._tpl.overwrite(newComponent.element.dom, newConfig);",
+                    "this.items = newComponent.element.select('.x-rating-item', newComponent.element.dom);        ",
+                    "if (this.config.clearIcon) {",
+                    "    this.clearBtn = newComponent.element.down('.' + this.getClearCls());",
+                    "    this.clearBtn.on('tap', this.onClear, this);",
+                    "}        "
+                ],
+                "designer|userClassName": "updateComponent"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen74314",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTouchStart",
+                "designer|params": [
+                    "e"
+                ],
+                "implHandler": [
+                    "/*",
+                    "* Start assigning values (selecting stars) when user touched the control.",
+                    "*/",
+                    "if (this.clearBtn && e.target == this.clearBtn.dom) {",
+                    "    this.onClear();",
+                    "    return;",
+                    "}",
+                    "this.onTouchMove(e);"
+                ],
+                "designer|userClassName": "onTouchStart"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen74396",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onTouchMove",
+                "designer|params": [
+                    "e"
+                ],
+                "implHandler": [
+                    "/*",
+                    "* Calculate the position of thumb related to control's items and determine what value is selected",
+                    "*/",
+                    "if (this.getDisabled()) {",
+                    "    return;",
+                    "}",
+                    "var offset = this.innerElement.getXY();",
+                    "var x = e.touches[0].pageX - offset[0];",
+                    "if (!Ext.isDefined(this.diameter)) {",
+                    "    var size = this.items.first().getSize();",
+                    "    this.diameter = Math.min(size.height, size.width);    ",
+                    "}",
+                    "",
+                    "var items = this.items;        ",
+                    "var count = items.getCount();",
+                    "if(x < 0)",
+                    "{",
+                    "    x = 0;",
+                    "}",
+                    "",
+                    "var targetIndex = Math.ceil((x / this.diameter) / count * this.getMaxValue() );",
+                    "if (targetIndex > 0) {//TODO check if targetIndex is a number",
+                    "    this.setValue(targetIndex);",
+                    "}",
+                    ""
+                ],
+                "designer|userClassName": "onTouchMove"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen74445",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "applyValue",
+                "designer|params": [
+                    "value"
+                ],
+                "implHandler": [
+                    "value = parseFloat(value);        ",
+                    "if (isNaN(value) || value === null) {",
+                    "    value = this.getDefaultValue();",
+                    "}",
+                    "",
+                    "this._value = value;"
+                ],
+                "designer|userClassName": "applyValue"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen76686",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "displayValue",
+                "designer|params": [
+                    "value"
+                ],
+                "implHandler": [
+                    "/*",
+                    "* Display value's representation in UI",
+                    "* @param {Number} value - index of item to select to",
+                    "*/",
+                    "if (!this.rendered) {",
+                    "    //TODO: replace event with ST2.0 equivalent            ",
+                    "    this.on('painted', Ext.Function.bind(this.displayValue, this, [value]), this, { single: true });",
+                    "    return;",
+                    "}",
+                    "var items = this.items;        ",
+                    "var count = items.getCount();",
+                    "var itemCls = this.getItemCls();",
+                    "var hoverCls = this.getItemHoverCls();",
+                    "",
+                    "var valueToDisplay = value / this.getMaxValue() * count - 1;",
+                    "",
+                    "",
+                    "for (var i = 0; i < count; i++) {",
+                    "    var item = items.item(i);",
+                    "    var curItemIsOn = i <= valueToDisplay || (i === 0 && value > 0);",
+                    "    item[curItemIsOn ? 'addCls' : 'removeCls'](hoverCls);",
+                    "    item[curItemIsOn ? 'removeCls' : 'addCls'](itemCls);",
+                    "}"
+                ],
+                "designer|userClassName": "displayValue"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen76765",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "setValue",
+                "designer|params": [
+                    "value"
+                ],
+                "implHandler": [
+                    "var currentValue = this._value;",
+                    "value = parseFloat(value);",
+                    "if (isNaN(value) || value === null) {",
+                    "    throw 'Argument exception: value argument is not a number.';",
+                    "}",
+                    "var minValue = this.getMinValue();        ",
+                    "//auto-correct user's input",
+                    "if (Ext.isNumber(minValue) && value < minValue) {",
+                    "    value = minValue;",
+                    "}",
+                    "if (value > this.getMaxValue()) {",
+                    "    value = this.getMaxValue();",
+                    "}",
+                    "this.callParent([value]);        ",
+                    "this.displayValue(value);      ",
+                    "this.fireEvent('change', this, value, currentValue);\t"
+                ],
+                "designer|userClassName": "setValue"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen76806",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "reset",
+                "implHandler": [
+                    "this.setValue(this.getDefaultValue());",
+                    ""
+                ],
+                "designer|userClassName": "reset"
+            },
+            "customConfigs": [],
+            "expanded": true
+        },
+        {
+            "id": "ExtBox1-ext-gen77960",
+            "type": "basicfunction",
+            "reference": {
+                "name": "items",
+                "type": "array"
+            },
+            "codeClass": null,
+            "userConfig": {
+                "fn": "onClear",
+                "implHandler": [
+                    "if (!this.getDisabled()) {",
+                    "    this.setValue(this.getDefaultValue());",
+                    "}"
+                ],
+                "designer|userClassName": "onClear"
+            },
+            "customConfigs": [],
+            "expanded": true
+        }
+    ]
+}

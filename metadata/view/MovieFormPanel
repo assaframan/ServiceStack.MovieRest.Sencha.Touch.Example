@@ -17,7 +17,7 @@
     "customConfigs": [],
     "designerId": "6689252e-bf36-4b45-ab4a-c25e12c63306",
     "$viewOrder": 1,
-    "expanded": true,
+    "expanded": false,
     "cn": [
         {
             "id": "ExtBox1-ext-gen26505",
@@ -59,7 +59,7 @@
                 "designer|userClassName": "MovieToolBar"
             },
             "customConfigs": [],
-            "expanded": true,
+            "expanded": false,
             "cn": [
                 {
                     "id": "ExtBox1-ext-gen77017",
@@ -480,8 +480,8 @@
                     "expanded": true
                 },
                 {
-                    "id": "ExtBox1-ext-gen10206",
-                    "type": "numberfield",
+                    "id": "ExtBox1-ext-gen3004",
+                    "type": "linkedinstance",
                     "reference": {
                         "name": "items",
                         "type": "array"
@@ -491,10 +491,12 @@
                         "label": "Rating",
                         "labelWidth": "35%",
                         "name": "Rating",
-                        "designer|userClassName": "RatingNumberField"
+                        "maxValue": 10
                     },
                     "customConfigs": [],
-                    "expanded": true
+                    "iconCls": "icon-linkedinstance",
+                    "expanded": true,
+                    "masterInstanceId": "ExtBox1-ext-gen60072"
                 },
                 {
                     "id": "ExtBox1-ext-gen6142",

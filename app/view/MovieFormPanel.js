@@ -16,6 +16,9 @@
 Ext.define('Movies.view.MovieFormPanel', {
     extend: 'Ext.form.Panel',
     alias: 'widget.movieformpanel',
+    requires: [
+        'Movies.view.RatingField'
+    ],
 
     config: {
         height: '',
@@ -83,10 +86,11 @@ Ext.define('Movies.view.MovieFormPanel', {
                         name: 'Title'
                     },
                     {
-                        xtype: 'numberfield',
+                        xtype: 'RatingField',
                         label: 'Rating',
                         labelWidth: '35%',
-                        name: 'Rating'
+                        name: 'Rating',
+                        maxValue: 10
                     },
                     {
                         xtype: 'datepickerfield',

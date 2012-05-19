@@ -1,0 +1,16 @@
+{
+    "id": "ExtBox1-ext-gen17496",
+    "type": "cssresource",
+    "reference": {
+        "name": "items",
+        "type": "array"
+    },
+    "codeClass": null,
+    "userConfig": {
+        "url": "Ext.ux.touch.Rating.css"
+    },
+    "customConfigs": [],
+    "designerId": "09a0dc01-c61b-4992-82f3-dd7d469654fb",
+    "$viewOrder": 0,
+    "expanded": true
+}

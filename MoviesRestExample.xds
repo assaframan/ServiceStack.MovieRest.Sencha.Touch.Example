@@ -82,6 +82,20 @@
                 "app/model/GlobalAppSettings.js"
             ],
             "className": "GlobalAppSettings"
+        },
+        "dcc8f7c4-fed1-4e7e-acd9-c863308c78eb": {
+            "paths": [
+                "metadata/view/RatingField",
+                "app/view/override/RatingField.js",
+                "app/view/RatingField.js"
+            ],
+            "className": "RatingField"
+        },
+        "09a0dc01-c61b-4992-82f3-dd7d469654fb": {
+            "paths": [
+                "metadata/resource/css"
+            ],
+            "className": "css"
         }
     },
     "expandedState": {
