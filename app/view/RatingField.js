@@ -59,7 +59,7 @@ Ext.define('Movies.view.RatingField', {
         });
 
 
-        this.callParent(config);
+        this.callParent([config]);
     },
 
     initialize: function() {
